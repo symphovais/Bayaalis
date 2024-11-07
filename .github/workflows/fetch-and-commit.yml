@@ -1,10 +1,8 @@
 name: Fetch Contentful and Commit to GitHub
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # Runs every hour; adjust as needed
-  workflow_dispatch:  # Allows manual triggering
   repository_dispatch:  # Allows triggering via Contentful webhook
+   types: [contentful_update]
 
 jobs:
   fetch_and_commit:
