@@ -3,10 +3,10 @@ import requests
 from datetime import datetime
 import os
 
-# Configuration
-SPACE_ID = 'slui2y4fqnvv'
-ENVIRONMENT_ID = 'master'  # Usually 'master'
-ACCESS_TOKEN = 'v2DFDE4HB77cFBdosY5nl0-L910jvBPOGJWeWVhCtJs'
+# Configuration using environment variables
+SPACE_ID = os.getenv('CONTENTFUL_SPACE_ID')
+ENVIRONMENT_ID = os.getenv('CONTENTFUL_ENVIRONMENT_ID', 'master')  # Default to 'master'
+ACCESS_TOKEN = os.getenv('CONTENTFUL_ACCESS_TOKEN')
 CONTENT_TYPE_ID = 'article'  # e.g., 'blogPost'
 
 # API Endpoint for entries
