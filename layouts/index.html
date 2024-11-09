@@ -6,41 +6,40 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-
       {{ .Content }}
     </div>
   </div>
-</section>
-{{ end }}
 
-{{ define "sidebar-prefooter" }}
-  {{ if site.Params.doks.backgroundDots -}}
-  <div class="d-flex justify-content-start">
-    <div class="bg-dots"></div>
-  </div>
-  {{ end -}}
-  {{ if eq $.Site.Language.LanguageName "English" }}
-  <section class="section section-md section-features">
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          
-        </div>        
-      </div>
-    </div>
-  </section>
-  {{ end }}
-{{ end }}
-
-{{ define "sidebar-footer" }}
-{{ if site.Params.doks.sectionFooter -}}
-<section class="section section-md container-fluid bg-light">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-7">
-      <h2 class="mt-2">Start building with Doks today</h2>
-      <a class="btn btn-primary rounded-pill px-4 my-2" href="/docs/{{ if site.Params.doks.docsVersioning }}{{ site.Params.doks.docsVersion }}/{{ end }}prologue/introduction/" role="button">{{ i18n "get-started" }}</a>
+  <!-- Blog Posts Section -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-9">
+      <h2 class="text-center">Latest Blog Posts</h2>
+      {{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") }}
+      {{ range $paginator.Pages }}
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title h4">
+              <a class="stretched-link text-dark text-decoration-none" href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </h2>
+            <p class="text-muted mb-2">
+              {{ .Date.Format "January 2, 2006" }}
+              <span class="mx-2">•</span>
+              {{ .ReadingTime }} minutes
+            </p>
+            <!-- No .Content included here to avoid rendering full blog -->
+          </div>
+        </div>
+      {{ end }}
     </div>
   </div>
+
+  <!-- Pagination -->
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      {{ template "_internal/pagination.html" . }}
+    </div>
+  </div>
 </section>
-{{ end -}}
 {{ end }}
