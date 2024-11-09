@@ -2,6 +2,10 @@
   name = "Blog"
   url = "/blog/"
   weight = 30
+[[main]]
+  name = "About"
+  url = "/about/"
+  weight = 40
 
 
 # [[sidebar_docs]]
