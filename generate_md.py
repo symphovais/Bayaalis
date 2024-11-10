@@ -2,6 +2,7 @@ import json
 import requests
 from datetime import datetime
 import os
+from contentful_rich_text import RichTextRenderer
 
 # Configuration using environment variables
 SPACE_ID = os.getenv('CONTENTFUL_SPACE_ID')
@@ -22,6 +23,9 @@ OUTPUT_FOLDER = 'content/blog'
 
 # Ensure output directory exists
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+# Initialize the Rich Text renderer
+renderer = RichTextRenderer()
 
 def fetch_all_entries():
     """Fetch all entries from Contentful, handling pagination."""
@@ -57,27 +61,23 @@ def fetch_all_entries():
 def get_field_value(field):
     """Helper function to get the value of a field, handling both localized and plain strings."""
     if isinstance(field, dict):
-        return field.get('en-US', '')  # Assume 'en-US' localization, use empty string if not found
+        return field.get('en-US', '')  # Assume 'en-US' localization
     elif isinstance(field, str):
-        return field  # If it's already a plain string, return it as is
-    return ''  # Return an empty string if field is None or unexpected type
+        return field
+    return ''
 
 def get_asset_url(asset):
     """Extract the URL from a Contentful asset."""
     file_field = asset.get('fields', {}).get('file')
-    # Debugging statements
-    # print("Asset ID:", asset.get('sys', {}).get('id'))
-    # print("file_field:", file_field)
     if isinstance(file_field, dict):
         # Assume 'en-US' localization
         file_info = file_field.get('en-US', {}) if 'en-US' in file_field else next(iter(file_field.values()))
     else:
-        file_info = file_field  # Could be a string or None
-    # print("file_info:", file_info)
+        file_info = file_field
     if isinstance(file_info, dict):
         url = file_info.get('url', '')
     elif isinstance(file_info, str):
-        url = file_info  # Assume it's already the URL
+        url = file_info
     else:
         print(f"Unexpected file_info type: {type(file_info)}")
         return ''
@@ -89,71 +89,36 @@ def get_asset_url(asset):
         return url
     return ''
 
-def rich_text_to_markdown(node, list_type=None):
-    """Recursively convert Contentful Rich Text node to Markdown."""
-    node_type = node.get('nodeType')
-    content = node.get('content', [])
+def get_body_content(fields):
+    """Get the body content, preferring mdBody over body."""
+    md_body_field = fields.get('mdBody')
+    md_body = get_field_value(md_body_field)
 
-    if node_type == 'document':
-        # Process all top-level content nodes
-        return '\n\n'.join(rich_text_to_markdown(child) for child in content)
-    elif node_type == 'paragraph':
-        # Process paragraph content
-        return ''.join(rich_text_to_markdown(child) for child in content)
-    elif node_type.startswith('heading-'):
-        level = int(node_type[-1])
-        return '#' * level + ' ' + ''.join(rich_text_to_markdown(child) for child in content)
-    elif node_type == 'unordered-list':
-        # Process each list item
-        return '\n'.join(rich_text_to_markdown(child, list_type='ul') for child in content)
-    elif node_type == 'ordered-list':
-        return '\n'.join(rich_text_to_markdown(child, list_type='ol') for child in content)
-    elif node_type == 'list-item':
-        # list_type should be passed from parent
-        prefix = '- ' if list_type == 'ul' else '1. '
-        # Process the child nodes, which may be 'paragraph's
-        item_content = ''.join(rich_text_to_markdown(child, list_type=list_type) for child in content)
-        return prefix + item_content
-    elif node_type == 'hyperlink':
-        # Generate Markdown link
-        url = node.get('data', {}).get('uri', '')
-        text = ''.join(rich_text_to_markdown(child) for child in content)
-        return f'[{text}]({url})'
-    elif node_type == 'text':
-        value = node.get('value', '')
-        marks = node.get('marks', [])
-        for mark in marks:
-            mark_type = mark.get('type')
-            if mark_type == 'bold':
-                value = f'**{value}**'
-            elif mark_type == 'italic':
-                value = f'*{value}*'
-            elif mark_type == 'underline':
-                value = f'<u>{value}</u>'
-            elif mark_type == 'code':
-                value = f'`{value}`'
-        return value
+    if md_body:
+        # Use mdBody content directly
+        return md_body.strip()
     else:
-        # For other node types, return empty string or handle accordingly
-        return ''
-
-def get_body_content(body_field):
-    """Convert Contentful Rich Text body field to Markdown."""
-    if isinstance(body_field, dict):
-        return rich_text_to_markdown(body_field)
-    elif isinstance(body_field, str):
-        return body_field  # If it's plain text, return as-is
-    return ""  # Return empty string if body_field is None or unexpected type
+        # Use the body field
+        body_field = fields.get('body')
+        if isinstance(body_field, dict):
+            # Render Rich Text to HTML and include it as-is
+            html_content = renderer.render(body_field)
+            return html_content.strip()
+        elif isinstance(body_field, str):
+            return body_field.strip()
+        else:
+            return ""
 
 def create_markdown_file(entry, assets):
     """Create a Markdown file for a Contentful entry."""
     fields = entry.get('fields', {})
+    sys_data = entry.get('sys', {})
 
-    # Fetch title, slug, date, and body, handling both localized dictionaries and plain strings
+    # Fetch title, slug, date, and body
     title = get_field_value(fields.get('title'))
     slug = get_field_value(fields.get('slug'))
     date = get_field_value(fields.get('date'))
-    body = get_body_content(fields.get('body'))
+    body = get_body_content(fields)
     description = get_field_value(fields.get('description'))
 
     # Get featuredImage URL
@@ -172,7 +137,7 @@ def create_markdown_file(entry, assets):
             print(f"Invalid image_link structure: {image_link}")
 
     # Check for required fields and skip entry if any are missing
-    if not title or not slug or not date or not body:
+    if not title or not slug or not date:
         print(f"Skipping entry due to missing required fields: {entry}")
         return
 
@@ -230,6 +195,17 @@ current_slugs = set()
 
 # Process entries and create Markdown files
 for item in entries:
+    # Check if the entry is published
+    if item.get('sys', {}).get('publishedVersion') is None:
+        # Remove the Markdown file if it exists
+        slug = get_field_value(item.get('fields', {}).get('slug'))
+        if slug:
+            file_path = os.path.join(OUTPUT_FOLDER, f"{slug}.md")
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                print(f"Removed unpublished content file: {file_path}")
+        continue
+
     slug = get_field_value(item.get('fields', {}).get('slug'))
     if slug:
         current_slugs.add(slug)
