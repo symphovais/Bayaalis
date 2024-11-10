@@ -2,7 +2,6 @@ import json
 import requests
 from datetime import datetime
 import os
-from contentful_rich_text import RichTextRenderer
 
 # Configuration using environment variables
 SPACE_ID = os.getenv('CONTENTFUL_SPACE_ID')
@@ -23,9 +22,6 @@ OUTPUT_FOLDER = 'content/blog'
 
 # Ensure output directory exists
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-
-# Initialize the Rich Text renderer
-renderer = RichTextRenderer()
 
 def fetch_all_entries():
     """Fetch all entries from Contentful, handling pagination."""
@@ -101,13 +97,30 @@ def get_body_content(fields):
         # Use the body field
         body_field = fields.get('body')
         if isinstance(body_field, dict):
-            # Render Rich Text to HTML and include it as-is
-            html_content = renderer.render(body_field)
-            return html_content.strip()
+            # Simplified handling: extract plain text from Rich Text content
+            plain_text = extract_plain_text_from_rich_text(body_field)
+            return plain_text.strip()
         elif isinstance(body_field, str):
             return body_field.strip()
         else:
             return ""
+
+def extract_plain_text_from_rich_text(rich_text):
+    """Extract plain text from a Rich Text field."""
+    node_type = rich_text.get('nodeType')
+    content = rich_text.get('content', [])
+
+    if node_type == 'document':
+        # Process all top-level content nodes
+        return '\n\n'.join(extract_plain_text_from_rich_text(child) for child in content)
+    elif node_type == 'paragraph':
+        # Process paragraph content
+        return ''.join(extract_plain_text_from_rich_text(child) for child in content)
+    elif node_type == 'text':
+        return rich_text.get('value', '')
+    else:
+        # Handle other node types if needed
+        return ''.join(extract_plain_text_from_rich_text(child) for child in content)
 
 def create_markdown_file(entry, assets):
     """Create a Markdown file for a Contentful entry."""
