@@ -21,8 +21,6 @@ seo:
 
 __In my previous blog,__ I discussed the concept of harmony between hardware and software—how they should work together seamlessly. Achieving this requires more than technical integration; it demands designing the user journey around clear touchpoints that create a cohesive experience for all stakeholders.
 
-![the-art-of-making-from-chow-mein-to-product-development](https://images.ctfassets.net/slui2y4fqnvv/3TFbRhXCjr2LACtERbSmsB/dbe2b18aeba419f487a3b21df7811c9e/DALL_E_2024-11-06_06.15.40_-_A_cozy_kitchen_scene_illustration_with_ingredients_laid_out_on_a_countertop__including_noodles.webp)
-
 The goal is not just to connect devices but to create a consistent, clear flow of information, keeping users informed and engaged, whether they’re in a room with the devices or managing them remotely.
 
 ### The Example: The IT Admin and In-Room User
