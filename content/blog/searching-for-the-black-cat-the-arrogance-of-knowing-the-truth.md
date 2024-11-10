@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/3gQUmy8e9b8IX8OBvLFO7n/a7ff5fa75e1dd120d63e8761c4cf1e6e/dall-e-2024-05-24-10-53-03-a-contemplative-scene-featuring-a-person-in-simple-tattered-clothes-sitting-cross-legged-in-medi.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
