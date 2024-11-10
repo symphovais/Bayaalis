@@ -65,19 +65,28 @@ def get_field_value(field):
 def get_asset_url(asset):
     """Extract the URL from a Contentful asset."""
     file_field = asset.get('fields', {}).get('file')
+    # Debugging statements
+    # print("Asset ID:", asset.get('sys', {}).get('id'))
+    # print("file_field:", file_field)
     if isinstance(file_field, dict):
         # Assume 'en-US' localization
         file_info = file_field.get('en-US', {}) if 'en-US' in file_field else next(iter(file_field.values()))
     else:
-        file_info = file_field
-    if file_info:
+        file_info = file_field  # Could be a string or None
+    # print("file_info:", file_info)
+    if isinstance(file_info, dict):
         url = file_info.get('url', '')
-        if url:
-            if url.startswith('//'):
-                url = 'https:' + url
-            elif url.startswith('/'):
-                url = 'https://images.ctfassets.net' + url
-            return url
+    elif isinstance(file_info, str):
+        url = file_info  # Assume it's already the URL
+    else:
+        print(f"Unexpected file_info type: {type(file_info)}")
+        return ''
+    if url:
+        if url.startswith('//'):
+            url = 'https:' + url
+        elif url.startswith('/'):
+            url = 'https://images.ctfassets.net' + url
+        return url
     return ''
 
 def rich_text_to_markdown(node, list_type=None):
@@ -157,6 +166,10 @@ def create_markdown_file(entry, assets):
             asset = assets.get(asset_id)
             if asset:
                 featured_image_url = get_asset_url(asset)
+            else:
+                print(f"Asset with ID {asset_id} not found in assets.")
+        else:
+            print(f"Invalid image_link structure: {image_link}")
 
     # Check for required fields and skip entry if any are missing
     if not title or not slug or not date or not body:
