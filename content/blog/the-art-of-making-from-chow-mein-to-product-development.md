@@ -19,8 +19,6 @@ seo:
   robots: "" # custom robot tags (optional)
 ---
 
-![the-art-of-making-from-chow-mein-to-product-development](//images.ctfassets.net/slui2y4fqnvv/3TFbRhXCjr2LACtERbSmsB/dbe2b18aeba419f487a3b21df7811c9e/DALL_E_2024-11-06_06.15.40_-_A_cozy_kitchen_scene_illustration_with_ingredients_laid_out_on_a_countertop__including_noodles.webp)
-
 When I need to cook something, I often find myself staring into the fridge, looking for inspiration. It’s one of those moments when you want to make something special yet practical, something that pleases everyone but doesn’t require hours. In these moments, I think of chow mein—a dish that’s flavorful, adaptable, and a little challenging. It’s a perfect choice, and I know it’ll bring smiles around the table.
 
 Once I’ve settled on chow mein, the process kicks in. I start by gathering ingredients, checking recipes for ideas, and remembering what worked well last time. This stage reminds me of product making, where you combine past experience with new inspiration. I set out my vegetables, protein, and noodles, knowing each part needs its own attention before they all come together. Each step has its place, building on the last, much like the structured stages in developing a product.
