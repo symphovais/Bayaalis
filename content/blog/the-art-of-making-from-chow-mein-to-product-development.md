@@ -11,6 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/3TFbRhXCjr2LACtERbSmsB/dbe2b18aeba419f487a3b21df7811c9e/DALL_E_2024-11-06_06.15.40_-_A_cozy_kitchen_scene_illustration_with_ingredients_laid_out_on_a_countertop__including_noodles.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)

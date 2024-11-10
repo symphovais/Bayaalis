@@ -11,6 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
+featuredImage: ""
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
