@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/6FINHZ5mN4R2jcS258PIEc/13700000e6706a74689ed6c3f20a1852/uob.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
