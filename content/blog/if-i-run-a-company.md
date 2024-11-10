@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/6rRIFoSeAptXC4cutHLZ4Y/10f5a718deb3379ac2ff8a203bfc5a7a/irun.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)

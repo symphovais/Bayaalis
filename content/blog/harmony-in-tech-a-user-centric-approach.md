@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/5rQfUI0LaBVshJSo6QxvrS/7b88c6bdba0f4b5067f92b93acc859aa/DALL_E_2024-11-10_22.40.51_-_An_abstract_representation_of_harmony_between_hardware_and_software__featuring_interconnected_.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
