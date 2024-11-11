@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/2P6CHpZLeCZnRczKakRAFh/1b1772dedd718c12b2941946a4ecff45/DALL_E_2024-11-11_10.55.17_-_An_abstract_representation_of_a_meeting_with_a_blend_of_in-person_and_online_participants._A_m.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
