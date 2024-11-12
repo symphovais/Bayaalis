@@ -2,8 +2,8 @@
 title: "Why SSR, SSG, and Server-Side Tracking Make Practical Sense"
 description: ""
 summary: ""
-date: 2024-11-12T12:00:00Z
-lastmod: 2024-11-12T12:00:00Z
+date: 2024-11-12T00:00:00Z
+lastmod: 2024-11-12T00:00:00Z
 draft: false
 weight: 50
 categories: []
