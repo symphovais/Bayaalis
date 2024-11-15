@@ -1,5 +1,5 @@
 title = "Bayaaliis(42)"
-baseurl = "http://localhost/"
+baseurl = "https://blog.symphonytek.dk/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
