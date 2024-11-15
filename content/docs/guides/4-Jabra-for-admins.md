@@ -1,5 +1,5 @@
 ---
-title: "Jabra+ for admins"
+title: "4 Jabra+ for admins"
 description: ""
 date: 2024-11-15T13:56:10Z
 draft: false

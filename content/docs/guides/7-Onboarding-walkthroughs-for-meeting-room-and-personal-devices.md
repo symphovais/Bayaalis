@@ -1,5 +1,5 @@
 ---
-title: "Onboarding walkthroughs for meeting room and personal devices"
+title: "7 Onboarding walkthroughs for meeting room and personal devices"
 description: ""
 date: 2024-11-15T13:55:09Z
 draft: false

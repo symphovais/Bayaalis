@@ -1,5 +1,5 @@
 ---
-title: "Configurations"
+title: "6 Configurations"
 description: ""
 date: 2024-11-15T14:01:23Z
 draft: false

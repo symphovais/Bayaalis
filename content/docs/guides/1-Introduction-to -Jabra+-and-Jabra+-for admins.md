@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Jabra+ and Jabra+ for admins"
+title: "1 Introduction to Jabra+ and Jabra+ for admins"
 description: ""
 date: 2024-11-15T13:50:17Z
 draft: false
