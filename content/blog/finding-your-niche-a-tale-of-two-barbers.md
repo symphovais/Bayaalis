@@ -19,8 +19,6 @@ seo:
   robots: "" # custom robot tags (optional)
 ---
 
-# Finding Your Niche: A Tale of Two Barbers
-
 In the bustling world of business, it's easy to feel intimidated by larger competitors. How can a smaller player survive, let alone thrive, when going up against established giants? The answer often lies in finding your niche – that special something that sets you apart. Let me share a real-world story that perfectly illustrates this concept.
 
 ## A Tale of Two Barbers
