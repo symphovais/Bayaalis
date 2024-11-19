@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Cost Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-8">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const CostCalculator = () => {
+            const [messages, setMessages] = React.useState(1000);
+            const [tokensPerMessage, setTokensPerMessage] = React.useState(100);
+            const [selectedTier, setSelectedTier] = React.useState('tier1');
+
+            const tiers = {
+                tier1: { range: "≤ 3B", cost: 0.10, maxTokens: 3000000000 },
+                tier2: { range: "3.1B - 8B", cost: 0.15, maxTokens: 8000000000 },
+                tier3: { range: "8.1B - 20B", cost: 0.20, maxTokens: 20000000000 },
+                tier4: { range: "20.1B - 40B", cost: 0.50, maxTokens: 40000000000 },
+                tier5: { range: "40.1B+", cost: 0.75, maxTokens: Infinity }
+            };
+
+            const calculateTotalTokens = () => messages * tokensPerMessage;
+
+            const calculateCost = (totalTokens) => {
+                const millionTokens = totalTokens / 1000000;
+                return millionTokens * tiers[selectedTier].cost;
+            };
+
+            const formatNumber = (num) => {
+                return num.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            };
+
+            const totalTokens = calculateTotalTokens();
+            const cost = calculateCost(totalTokens);
+            const equation = `Cost = (${messages.toLocaleString()} messages × ${tokensPerMessage.toLocaleString()} tokens) ÷ 1,000,000 × $${tiers[selectedTier].cost}`;
+
+            return (
+                <div className="max-w-3xl w-full">
+                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
+                            <h1 className="text-3xl font-bold text-white mb-2">AI Model Cost Calculator</h1>
+                            <p className="text-blue-100 text-sm">Calculate your monthly AI model hosting costs on Cloudflare</p>
+                        </div>
+                        
+                        <div className="p-8">
+                            <div className="space-y-6">
+                                <div className="grid gap-6 md:grid-cols-2">
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium text-gray-700">Pricing Tier</label>
+                                        <select 
+                                            value={selectedTier}
+                                            onChange={(e) => setSelectedTier(e.target.value)}
+                                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                        >
+                                            {Object.entries(tiers).map(([key, tier]) => (
+                                                <option key={key} value={key}>
+                                                    {tier.range} - ${tier.cost} per Million
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium text-gray-700">Monthly Messages</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={messages}
+                                            onChange={(e) => setMessages(Math.max(1, parseInt(e.target.value) || 1))}
+                                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2 md:col-span-2">
+                                        <label className="block text-sm font-medium text-gray-700">Tokens per Message</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={tokensPerMessage}
+                                            onChange={(e) => setTokensPerMessage(Math.max(1, parseInt(e.target.value) || 1))}
+                                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 space-y-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="bg-white rounded-lg p-4 shadow-sm">
+                                            <div className="text-sm text-gray-500 mb-1">Total Monthly Tokens</div>
+                                            <div className="text-2xl font-bold text-gray-900">{formatNumber(totalTokens)}</div>
+                                        </div>
+                                        <div className="bg-white rounded-lg p-4 shadow-sm">
+                                            <div className="text-sm text-gray-500 mb-1">Estimated Monthly Cost</div>
+                                            <div className="text-2xl font-bold text-green-600">${formatNumber(cost)}</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="bg-white rounded-lg p-4 shadow-sm">
+                                        <div className="text-sm font-medium text-gray-700 mb-2">Cost Calculation</div>
+                                        <div className="text-sm text-gray-600 font-mono bg-gray-50 p-3 rounded">
+                                            {equation} = ${formatNumber(cost)}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="text-sm text-gray-500 bg-yellow-50 border border-yellow-100 rounded-lg p-4">
+                                    <strong>Note:</strong> Select the appropriate tier based on your expected monthly token usage.
+                                    Prices are in USD and do not include any additional fees or taxes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<CostCalculator />, document.getElementById('root'));
+    </script>
+</body>
+</html>
