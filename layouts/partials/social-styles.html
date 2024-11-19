@@ -1,0 +1,44 @@
+<style>
+    .social-share-container {
+      padding: 1rem 0;
+      border-top: 1px solid #eee;
+    }
+  
+    .social-buttons {
+      display: inline-flex;
+      align-items: center;
+    }
+  
+    .social-btn {
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+    }
+  
+    .social-btn:hover {
+      transform: translateY(-2px);
+      color: #fff;
+    }
+  
+    .twitter { background-color: #1DA1F2; }
+    .linkedin { background-color: #0A66C2; }
+    .facebook { background-color: #1877F2; }
+    .email { background-color: #666; }
+  
+    @media (max-width: 576px) {
+      .social-share-container {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+  
+      .social-buttons {
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
