@@ -2,8 +2,8 @@
 title: "Two Visions for the Future of Transportation: Autonomous Vehicles and Personal Pods"
 description: ""
 summary: ""
-date: 2024-11-20T00:00:00Z
-lastmod: 2024-11-20T00:00:00Z
+date: 2024-11-19T00:00:00Z
+lastmod: 2024-11-19T00:00:00Z
 draft: false
 weight: 50
 categories: []
