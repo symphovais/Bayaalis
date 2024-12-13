@@ -1,52 +1,56 @@
 {{ define "main" }}
-<section class="section container-fluid mt-n3 pb-3">
+<section class="section container-fluid mt-n3 pb-0">
   <div class="row justify-content-center">
     <div class="col-lg-12 text-center">
-      <h1>{{ .Title }}</h1>
+      <h1 class="mb-3">{{ .Title }}</h1>
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
-      <p class="lead">{{ .Params.lead | safeHTML }}</p>
+      <p class="lead mb-2">{{ .Params.lead | safeHTML }}</p>
       {{ .Content }}
     </div>
   </div>
 
   <!-- Blog Posts Section -->
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mt-4">
     <div class="col-xl-11">
       <h2 class="text-center mb-4">Latest Blog Posts</h2>
       <!-- Set posts per page to 20 -->
       {{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 20 }}
-      <div class="row row-cols-1 row-cols-lg-2 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
         {{ range $paginator.Pages }}
           <div class="col">
-            <div class="card h-100 shadow-sm">
-              <div class="row g-0 align-items-center h-100">
-                <!-- Image Section -->
-                <div class="col-auto">
-                  <a href="{{ .RelPermalink }}" class="d-block" style="width: 120px;">
-                    <img src="{{ if .Params.featuredImage }}{{ .Params.featuredImage }}{{ else }}/Symphonytek_logo.png{{ end }}" 
-                         class="img-fluid" 
-                         style="width: 120px; height: 120px; object-fit: cover;" 
-                         alt="Blog Image for {{ .Title }}">
+            <article class="card border-0 shadow-sm hover-shadow transition-shadow h-100">
+              <!-- Image Section -->
+              {{ if .Params.featuredImage }}
+              <img src="{{ .Params.featuredImage }}" 
+                   class="card-img-top" 
+                   style="height: 240px; object-fit: cover;" 
+                   alt="Blog Image for {{ .Title }}">
+              {{ else }}
+              <img src="/Symphonytek_logo.png" 
+                   class="card-img-top" 
+                   style="height: 240px; object-fit: cover;" 
+                   alt="Default Blog Image">
+              {{ end }}
+              <!-- Content Section -->
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="card-title h5 mb-3">
+                  <a class="text-dark text-decoration-none stretched-link" href="{{ .RelPermalink }}">
+                    {{ .Title }}
                   </a>
-                </div>
-                <!-- Content Section -->
-                <div class="col">
-                  <div class="card-body py-2 px-3">
-                    <h3 class="card-title h5 mb-1">
-                      <a class="text-dark text-decoration-none stretched-link" href="{{ .RelPermalink }}">
-                        {{ .Title }}
-                      </a>
-                    </h3>
-                    <p class="text-muted small mb-0">
-                      {{ .Date.Format "January 2, 2006" }}
-                      <span class="mx-2">•</span>
-                      {{ .ReadingTime }} min read
-                    </p>
-                  </div>
+                </h3>
+                {{ if .Description }}
+                <p class="card-text text-muted flex-grow-1" style="font-size: 0.95rem;">
+                  {{ .Description | truncate 120 }}
+                </p>
+                {{ end }}
+                <div class="text-muted mt-auto" style="font-size: 0.875rem;">
+                  {{ .Date.Format "January 2, 2006" }}
+                  <span class="mx-2">•</span>
+                  {{ .ReadingTime }} min read
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         {{ end }}
       </div>
