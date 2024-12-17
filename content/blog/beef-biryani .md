@@ -19,11 +19,6 @@ seo:
   robots: "" # custom robot tags (optional)
 ---
 
-Here's the **final version** of your Beef Biryani recipe without the initial ingredient list and with quantities included directly in the steps. It's clean, easy to follow, and blog-friendly.  
-
----
-
-# **Beef Biryani Recipe**  
 A flavorful and aromatic Beef Biryani that’s perfect for special occasions or a hearty family meal. I don’t cook all the time, but when I do, this dish is a crowd-pleaser!  
 
 ---
