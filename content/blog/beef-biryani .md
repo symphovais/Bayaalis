@@ -1,5 +1,5 @@
 ---
-title: "Mutton Biryani "
+title: "Beef Biryani "
 description: ""
 summary: ""
 date: 2024-12-17T00:00:00Z
