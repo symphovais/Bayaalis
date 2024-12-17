@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: ""
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/6Jcei2xOFFulvFgHRbu3rT/a98488b7439098c0445726e7cabbbeed/DALL_E_2024-12-17_14.33.08_-_A_beautifully_presented_beef_biryani_served_in_a_traditional_Indian_brass_pot._The_biryani_con.webp"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
