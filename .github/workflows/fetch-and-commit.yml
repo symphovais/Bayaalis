@@ -3,6 +3,7 @@ name: Fetch Contentful and Commit to GitHub
 on:
   repository_dispatch:
     types: [contentful_update]  # Ensure this matches the webhook payload's event_type
+  workflow_dispatch:
 
 permissions:
   contents: write  # Allows the workflow to push changes to the repository
