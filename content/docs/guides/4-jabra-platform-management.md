@@ -2,7 +2,7 @@
 title: "Jabra+ platform management"
 date: 2025-06-23T11:31:51.663Z
 weight: 4
----
+--- 
 
 ## 4 Jabra+ platform management
 

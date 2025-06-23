@@ -4,7 +4,7 @@ date: 2025-06-23T11:31:54.434Z
 weight: 7
 ---
 
-## 7 Software clients
+## 7 Software clients 
 
 A software client establishes a connection between an organization's Jabra devices and the platform. Installing and running a software or desktop client ( Jabra+ desktop app) on a computer is a prerequisite to remote manage Jabra personal or meeting room devices and adds them to virtual inventories.
 

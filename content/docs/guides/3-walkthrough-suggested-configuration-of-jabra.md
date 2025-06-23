@@ -3,7 +3,7 @@ title: "Walkthrough: Suggested configuration of Jabra+"
 date: 2025-06-23T11:31:50.746Z
 weight: 3
 ---
-
+ 
 ## 3 Walkthrough: Suggested configuration of Jabra+
 
 At this point, you have completed the Quick Start Guide and provisioned Jabra personal or meeting room devices. You or other relevant admin users can now configure the Jabra+ platform.

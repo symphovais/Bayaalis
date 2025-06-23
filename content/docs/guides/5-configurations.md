@@ -2,8 +2,7 @@
 title: "Configurations"
 date: 2025-06-23T11:31:52.506Z
 weight: 5
----
-
+--- 
 ## 5 Configurations
 
 A configuration is a collection of settings that includes firmware management for Jabra meeting room and personal devices.

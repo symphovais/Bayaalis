@@ -46,6 +46,7 @@ async function syncContentful() {
     const entries = await client.getEntries({
       content_type: 'chapter', // Using the 'chapter' content type from your screenshot
       limit: 1000,
+      order: 'fields.order', // Sort by the 'order' field, ascending
     });
 
     if (entries.items.length === 0) {
