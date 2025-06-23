@@ -5,16 +5,15 @@
       <h1 class="text-center">{{ if eq .CurrentSection .FirstSection }}{{ .Section | humanize }}{{ else }}{{ .Title }}{{ end }}</h1>
       {{ with .Content }}<div class="text-center">{{ . }}</div>{{ end }}
 			<div class="card-list">
-				{{ $currentSection := .CurrentSection }}
-				{{ range where .Site.RegularPages.ByTitle "Section" .Section }}
-					{{ if in (.RelPermalink | string) $currentSection.RelPermalink }}
-						<div class="card my-3">
-							<div class="card-body">
-								<a class="stretched-link" href="{{ .RelPermalink }}">{{ .Params.title | title }} &rarr;</a>
-								{{ with .Params.description }}<p class="card-text mt-2">{{ . }}</p>{{ end }}
-							</div>
-						</div>
-					{{ end }}
+				{{ range .Pages.ByWeight }}
+				<div class="card my-3">
+					<div class="card-body">
+						<h5 class="card-title"><a class="stretched-link" href="{{ .RelPermalink }}">{{ .Title }} &rarr;</a></h5>
+						{{ with .Description }}
+						<p class="card-text">{{ . }}</p>
+						{{ end }}
+					</div>
+				</div>
 				{{ end }}
 			</div>
     </article>
