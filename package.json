@@ -9,7 +9,8 @@
     "dev": "hugo server --disableFastRender --noHTTPCache",
     "format": "prettier **/** -w -c",
     "build": "hugo --minify --gc",
-    "preview": "vite preview --outDir public"
+    "preview": "vite preview --outDir public",
+    "sync-contentful": "node scripts/contentful-to-hugo.js"
   },
   "dependencies": {
     "@thulite/doks-core": "^1.8.0",
@@ -17,7 +18,9 @@
     "@thulite/inline-svg": "^1.1.0",
     "@thulite/seo": "^2.4.1",
     "@tabler/icons": "^3.12.0",
-    "thulite": "^2.5.0"
+    "thulite": "^2.5.0",
+     "contentful": "^10.6.14",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
