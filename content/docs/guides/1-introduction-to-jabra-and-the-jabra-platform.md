@@ -3,9 +3,9 @@ title: "Introduction to Jabra+ and the Jabra+ platform"
 date: 2025-06-23T11:31:49.117Z
 weight: 1
 ---
- 
+
 ## 1 Introduction to Jabra+ and the Jabra+ platform
- 
+
 Jabra+ is a cloud-based, comprehensive digital ecosystem designed for efficient remote management of Jabra devices, meeting business needs through interconnected digital touchpoints.
 
 Jabra+ starting point is the platform -a multi-tenant Software-as-a-Service (SaaS) platform for IT administrators that centralizes management of Jabra meeting room devices, personal devices and speakerphones, offering features like usage tracking, advanced analytics, and real-time room availability, further providing a global oversight of meeting room device fleets and personal devices.

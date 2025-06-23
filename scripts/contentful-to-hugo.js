@@ -57,7 +57,7 @@ async function syncContentful() {
     console.log(`Found ${entries.items.length} chapters. Writing to markdown files...`);
 
     for (const item of entries.items) {
-      const { title, slug, body, order, tags } = item.fields;
+      const { title, slug, body, order, tags, description } = item.fields;
       const fileName = slug ? slugify(slug) : slugify(title);
 
       if (!fileName) {
@@ -68,6 +68,9 @@ async function syncContentful() {
       // --- Build the Frontmatter ---
       let frontmatter = '---\n';
       frontmatter += `title: "${title || ''}"\n`;
+      if (description) {
+        frontmatter += `description: "${description}"\n`;
+      }
       frontmatter += `date: ${item.sys.updatedAt}\n`;
       if (order) {
         // Use 'weight' for ordering pages in Hugo

@@ -29,13 +29,13 @@ After account and organization creation, you can enable SSO and invite additiona
 - Inviting additional admin users
 
 Only owners and members with edit rights in the Jabra+ platform can download organization-specific software clients, manage Jabra devices remotely, set the settings for one or a group of Jabra devices, manage the firmware, and more. For conceptual information on the different components of the platform, read the Jabra+ platform chapter.
- 
+
 ## 2.1 Creating a Jabra+ account
 
 In the Jabra+ platform, you must first create a Jabra+ account.
 
 To create an account:
- 
+
 - 1. In a web browser, enter the following URL: https://cloud.jabra.com
 - o Alternatively: On the public product page for Jabra+, on the upper right-hand side of the screen, click the account icon.
 - 2. In the Log in to Jabra+ pane, click Create account.

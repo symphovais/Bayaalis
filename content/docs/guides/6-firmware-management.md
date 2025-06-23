@@ -2,7 +2,7 @@
 title: "Firmware management"
 date: 2025-06-23T11:31:53.347Z
 weight: 6
---- 
+---
 
 ## 6 Firmware management
 
