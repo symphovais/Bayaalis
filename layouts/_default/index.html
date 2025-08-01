@@ -1,0 +1,138 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-0">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      <h1 class="mb-3">{{ .Title }}</h1>
+    </div>
+    <div class="col-lg-9 col-xl-8 text-center">
+      <p class="lead mb-2">{{ .Params.lead | safeHTML }}</p>
+      {{ .Content }}
+    </div>
+  </div>
+
+  <!-- Blog Posts Section -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-xl-11">
+      <h2 class="text-center mb-4">Latest Blog Posts</h2>
+      <!-- Set posts per page to 20 -->
+      {{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 20 }}
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+        {{ range $paginator.Pages }}
+          <div class="col">
+            <article class="card border-0 shadow-sm hover-shadow transition-shadow h-100">
+              <!-- Image Section -->
+              {{ if .Params.featuredImage }}
+              <img src="{{ .Params.featuredImage }}" 
+                   class="card-img-top" 
+                   style="height: 240px; object-fit: cover;" 
+                   alt="Blog Image for {{ .Title }}">
+              {{ else }}
+              <img src="/Symphonytek_logo.png" 
+                   class="card-img-top" 
+                   style="height: 240px; object-fit: cover;" 
+                   alt="Default Blog Image">
+              {{ end }}
+              <!-- Content Section -->
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="card-title h5 mb-3">
+                  <a class="text-dark text-decoration-none stretched-link" href="{{ .RelPermalink }}">
+                    {{ .Title }}
+                  </a>
+                </h3>
+                {{ if .Description }}
+                <p class="card-text text-muted flex-grow-1" style="font-size: 0.95rem;">
+                  {{ .Description | truncate 120 }}
+                </p>
+                {{ end }}
+                <div class="text-muted mt-auto" style="font-size: 0.875rem;">
+                  {{ .Date.Format "January 2, 2006" }}
+                  <span class="mx-2">•</span>
+                  {{ .ReadingTime }} min read
+                </div>
+              </div>
+            </article>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Pagination -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-auto">
+      {{ if gt $paginator.TotalPages 1 }}
+      <nav aria-label="Blog navigation">
+        <ul class="pagination">
+          <!-- First page -->
+          {{ if ne $paginator.PageNumber 1 }}
+          <li class="page-item">
+            <a class="page-link" href="{{ $paginator.First.URL }}" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          {{ end }}
+          
+          <!-- Previous page -->
+          {{ if $paginator.HasPrev }}
+          <li class="page-item">
+            <a class="page-link" href="{{ $paginator.Prev.URL }}" aria-label="Previous">
+              <span aria-hidden="true">&lsaquo;</span>
+            </a>
+          </li>
+          {{ end }}
+          
+          <!-- Page numbers -->
+          {{ range $paginator.Pagers }}
+          <li class="page-item{{ if eq . $paginator }} active{{ end }}">
+            <a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a>
+          </li>
+          {{ end }}
+          
+          <!-- Next page -->
+          {{ if $paginator.HasNext }}
+          <li class="page-item">
+            <a class="page-link" href="{{ $paginator.Next.URL }}" aria-label="Next">
+              <span aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          {{ end }}
+          
+          <!-- Last page -->
+          {{ if ne $paginator.PageNumber $paginator.TotalPages }}
+          <li class="page-item">
+            <a class="page-link" href="{{ $paginator.Last.URL }}" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </nav>
+      {{ end }}
+    </div>
+  </div>
+
+  <style>
+    .card {
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.1)!important;
+    }
+    .page-link {
+      color: #333;
+      border-color: #dee2e6;
+    }
+    .page-item.active .page-link {
+      background-color: #333;
+      border-color: #333;
+    }
+    @media (max-width: 991.98px) {
+      .col-auto img {
+        width: 100px !important;
+        height: 100px !important;
+      }
+    }
+  </style>
+</section>
+{{ end }}
