@@ -11,7 +11,8 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/5U0RSQizwH4WNLBcB1vgi/91517efbd56247e7f4137198d8200117/DALL_E_2024-11-12_12.01.53_-_A_clean__minimalistic_illustration_representing_server-side_rendering__SSR__and_static_site_ge.webp"
+featuredImage: "/Symphonytek_logo.png"
+layout: "blog/single"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)

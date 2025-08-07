@@ -4,7 +4,7 @@ description = "Congrats on setting up a new Doks project!"
 images = ["cover.png"]
 
 # mainSections
-mainSections = ["docs"]
+mainSections = ["docs", "blog"]
 
 [social]
   twitter = "getdoks"
@@ -69,6 +69,9 @@ mainSections = ["docs"]
   relatedPosts = false # false (default) or true
   imageList = true # true (default) or false
   imageSingle = true # true (default) or false
+
+  # Custom blog settings
+  blogSingle = true # true or false
 
   # Repository
   editPage = false # false (default) or true
