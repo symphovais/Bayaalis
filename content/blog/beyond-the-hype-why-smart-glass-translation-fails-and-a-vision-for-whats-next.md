@@ -1,5 +1,5 @@
 ---
-title: "Beyond the Hype: Why Smart Glass Translation Fails and a Vision for What's Next"
+title: "Beyond the Hype: Why Smart Glass Fail—And a Vision for What's Next"
 description: ""
 summary: ""
 date: 2025-07-31T00:00:00Z

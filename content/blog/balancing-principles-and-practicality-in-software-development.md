@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: "/Symphonytek_logo.png"
+featuredImage: ""
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
