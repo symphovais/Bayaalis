@@ -19,7 +19,7 @@ seo:
   robots: "" # custom robot tags (optional)
 ---
 
-In software engineering, we talk about "design patterns"—elegant, reusable solutions to common problems. But for every good pattern, there's an "anti-pattern"—a common practice that seems like a good idea but ultimately leads to trouble. One of the most intriguing of these is the "__Poltergeist__."
+In software engineering, we talk about "design patterns"—elegant, reusable solutions to common problems. But for every good pattern, there's an "anti-pattern"(or a Bad-Smell as we lovingly call it), a common practice that seems like a good idea but ultimately leads to trouble. One of the most intriguing of these is the "__Poltergeist__."
 
 #### **What is a Poltergeist in Software?**
 
