@@ -11,7 +11,7 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
-featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/1kWq2fPkagNMnD4GEeroTc/89b0d8926cc85ebb546858084ef431e0/ChatGPT_Image_Oct_24__2025__09_15_20_AM.png"
+featuredImage: "https://images.ctfassets.net/slui2y4fqnvv/6XUhCV5KnAMhiaB5cy21NR/0e0424108c016c911560b7691949285c/ChatGPT_Image_Oct_24__2025__09_20_34_AM.png"
 seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
