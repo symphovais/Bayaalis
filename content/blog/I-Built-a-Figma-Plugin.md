@@ -33,7 +33,7 @@ I built a plugin called **ConteFi** to bridge the gap between Figma and Contentf
 
 ## The Problem: UI Labels Are "Data," Not Just Pixels
 
-In modern web development, we don't hardcode text. We use translation keys (like `app.buttons.submit` or `error.login.failed`).
+In modern web development, we don't hardcode text. We use translation keys (like app.buttons.submit or error.login.failed).
 
 The problem is that these keys usually live in the codebase or the CMS (Contentful), while the visual design lives in Figma. Keeping them in sync is a nightmare.
 
