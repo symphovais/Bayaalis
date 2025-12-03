@@ -48,7 +48,7 @@ When a designer creates a new "Sign Up" screen, they are inventing new buttons a
 
 With ConteFi, they can:
 1.  Write the text directly in Figma.
-2.  Name the text node `btn_signup_confirm`.
+2.  Name the text node btn_signup_confirm.
 3.  **Push it to Contentful with one click.**
 
 Suddenly, the designer isn't just making a mockup; they are populating the production database. By the time I start coding, the keys are already there.
@@ -65,21 +65,21 @@ Create a new Content Type in Contentful. Call it **"UI Label"** or **"App String
 ### 2. The Fields
 You only need two fields:
 
-* **`key` (Short Text):** This is the unique ID. This is what developers reference in the code (e.g., `onboarding_welcome_title`).
-* **`value` (Text):** This is the actual string displayed to the user.
+* **key (Short Text):** This is the unique ID. This is what developers reference in the code (e.g., onboarding_welcome_title).
+* **value (Text):** This is the actual string displayed to the user.
     * *Crucial Step:* Enable **Localization** on this field.
 
 ### 3. The Result
 Your Contentful data ends up looking like a dictionary:
 
-| Key (`key`) | Value (`value`) |
+| Key (key) | Value (value) |
 | :--- | :--- |
-| `btn_save` | Save Changes |
-| `btn_cancel` | Cancel |
-| `msg_success` | Update successful! |
+| btn_save | Save Changes |
+| btn_cancel | Cancel |
+| msg_success | Update successful! |
 
 ### 4. The Magic Connection
-In Figma, the designer simply names their text layer to match the **Key** (e.g., `btn_save`). The plugin connects the dots.
+In Figma, the designer simply names their text layer to match the **Key** (e.g., btn_save). The plugin connects the dots.
 
 ## Why It Works
 
