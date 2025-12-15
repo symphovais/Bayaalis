@@ -33,7 +33,7 @@ This is the bread and butter. You trigger it, you talk, and text appears.
 
 **How it works:**
 
-1. **Trigger:** Press the shortcut (default is `Ctrl+Shift+Space`, but you can change it).
+1. **Trigger:** Press the shortcut (default is *Ctrl+Shift+Space*, but you can change it).
 2. **Speak:** The little window indicates it's listening.
 3. **Finish:** Press the shortcut again.
 
