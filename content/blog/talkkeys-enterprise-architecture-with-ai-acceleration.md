@@ -37,7 +37,7 @@ The architecture decisions were mine. The speed of implementation was AI-assiste
 
 ### The Stack
 
-![arch](//images.ctfassets.net/slui2y4fqnvv/1lnxENBuQ8PDjlNf2Gbi2m/abaa406e1425948332b3805d29e24477/mermaid-diagram-2025-12-15-220029.png)
+![arch](https://images.ctfassets.net/slui2y4fqnvv/1lnxENBuQ8PDjlNf2Gbi2m/abaa406e1425948332b3805d29e24477/mermaid-diagram-2025-12-15-220029.png)
 
 Three layers. Each with a clear job.
 
