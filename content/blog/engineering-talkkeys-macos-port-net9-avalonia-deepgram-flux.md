@@ -36,7 +36,7 @@ By sharing the **Core** and **ViewModel** projects across both, I can fix bugs a
 
 ## Technical Architecture
 
-To make the app truly platform-agnostic, I relied heavily on interface-based abstraction within `TalkKeys.Core`. The UI never talks to the hardware; it only talks to interfaces.
+To make the app truly platform-agnostic, I relied heavily on interface-based abstraction within TalkKeys.Core. The UI never talks to the hardware; it only talks to interfaces.
 
 ### 1. Swapping System Services
 
@@ -60,7 +60,7 @@ Using Flux’s features, I've implemented **hands-free completion**. The service
 
 ## Implementation Details
 
-In the Avalonia project, I use conditional MSBuild properties to ensure that macOS-specific dependencies like `PortAudioSharp2` are only included when building for that target.
+In the Avalonia project, I use conditional MSBuild properties to ensure that macOS-specific dependencies like PortAudioSharp2 are only included when building for that target.
 
 ```xml
 <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
@@ -69,7 +69,7 @@ In the Avalonia project, I use conditional MSBuild properties to ensure that mac
 
 ```
 
-At runtime, the `App.axaml.cs` handles the service registration:
+At runtime, the App.axaml.cs handles the service registration:
 
 ```csharp
 if (OperatingSystem.IsMacOS())
