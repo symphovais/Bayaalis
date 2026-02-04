@@ -1,0 +1,38 @@
+{{/*
+  Featured Article Partial
+  Usage: {{ partial "homepage/featured-article.html" $post }}
+  Parameters: Hugo page object (the featured post)
+*/}}
+{{ $post := . }}
+
+<article class="featured-article">
+  <!-- Featured Image -->
+  {{ if and $post.Params.featuredImage (ne $post.Params.featuredImage "") }}
+  <div class="featured-article__image">
+    <img src="{{ $post.Params.featuredImage }}"
+         alt="{{ $post.Title }}"
+         loading="eager">
+  </div>
+  {{ else }}
+  <div class="featured-article__fallback">
+    <img src="/Symphonytek_logo.png" alt="Featured Article">
+  </div>
+  {{ end }}
+
+  <!-- Content Overlay -->
+  <div class="featured-article__overlay">
+    <h2 class="featured-article__title">
+      <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
+    </h2>
+
+    {{ with $post.Description }}
+    <p class="featured-article__description">{{ . | truncate 160 }}</p>
+    {{ end }}
+
+    <div class="featured-article__meta">
+      <span>{{ $post.Date.Format "January 2, 2006" }}</span>
+      <span>•</span>
+      <span>{{ $post.ReadingTime }} min read</span>
+    </div>
+  </div>
+</article>

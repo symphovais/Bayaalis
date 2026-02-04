@@ -1,1 +1,49 @@
 // Put your custom SCSS variables here
+
+// =============================================================================
+// Homepage Revamp - CSS Custom Properties
+// =============================================================================
+
+// Primary colors
+$homepage-primary: #4c63d2;
+$homepage-primary-dark: #2c3e50;
+$homepage-accent: #667eea;
+
+// Background colors
+$homepage-bg-light: #fafbfc;
+$homepage-bg-dark: #1a1a2e;
+
+// Text colors
+$homepage-text-primary: #1a1a1a;
+$homepage-text-secondary: #6c757d;
+$homepage-text-muted: #8a8a8a;
+
+// Card styles
+$homepage-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+$homepage-card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+$homepage-card-radius: 1rem;
+
+// Transitions
+$homepage-transition: all 0.3s ease;
+$homepage-transition-slow: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// CSS Custom Properties for dark mode support
+:root {
+  --homepage-primary: #{$homepage-primary};
+  --homepage-primary-dark: #{$homepage-primary-dark};
+  --homepage-accent: #{$homepage-accent};
+  --homepage-bg: #{$homepage-bg-light};
+  --homepage-text: #{$homepage-text-primary};
+  --homepage-text-secondary: #{$homepage-text-secondary};
+  --homepage-card-bg: #ffffff;
+  --homepage-card-shadow: #{$homepage-card-shadow};
+}
+
+// Dark mode overrides
+[data-bs-theme="dark"] {
+  --homepage-bg: #{$homepage-bg-dark};
+  --homepage-text: #e9ecef;
+  --homepage-text-secondary: #adb5bd;
+  --homepage-card-bg: #16213e;
+  --homepage-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}

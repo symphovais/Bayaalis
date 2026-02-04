@@ -1,0 +1,21 @@
+{{/*
+  Article Grid Partial
+  Usage: {{ partial "homepage/article-grid.html" (dict "posts" $posts "context" .) }}
+  Parameters:
+    - posts: slice of Hugo page objects
+    - context: parent context for accessing site data
+*/}}
+{{ $posts := .posts }}
+
+<div class="article-grid__header">
+  <h2 class="article-grid__title">More Articles</h2>
+  <p class="article-grid__subtitle">Explore more insights and ideas</p>
+</div>
+
+<div class="row g-4">
+  {{ range $posts }}
+  <div class="col-lg-4 col-md-6 col-12">
+    {{ partial "homepage/article-card.html" . }}
+  </div>
+  {{ end }}
+</div>

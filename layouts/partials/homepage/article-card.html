@@ -1,0 +1,37 @@
+{{/*
+  Article Card Partial
+  Usage: {{ partial "homepage/article-card.html" $post }}
+  Parameters: Hugo page object
+*/}}
+{{ $post := . }}
+
+<article class="article-card">
+  <!-- Card Image -->
+  {{ if and $post.Params.featuredImage (ne $post.Params.featuredImage "") }}
+  <div class="article-card__image">
+    <img src="{{ $post.Params.featuredImage }}"
+         alt="{{ $post.Title }}"
+         loading="lazy">
+  </div>
+  {{ else }}
+  <div class="article-card__fallback">
+    <img src="/Symphonytek_logo.png" alt="Article">
+  </div>
+  {{ end }}
+
+  <!-- Card Body -->
+  <div class="article-card__body">
+    <h3 class="article-card__title">
+      <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
+    </h3>
+
+    {{ with $post.Description }}
+    <p class="article-card__excerpt">{{ . | truncate 100 }}</p>
+    {{ end }}
+
+    <div class="article-card__meta">
+      <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
+      <span>{{ $post.ReadingTime }} min read</span>
+    </div>
+  </div>
+</article>

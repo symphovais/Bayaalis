@@ -1,106 +1,59 @@
 {{ define "main" }}
-<article class="container-fluid mt-3">
-  <!-- Back Button -->
-  <div class="row mb-4">
-    <div class="col-lg-8 mx-auto">
-      <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-        Back
-      </button>
-    </div>
-  </div>
-
-  <!-- Title Section -->
-  <div class="row mb-4">
-    <div class="col-lg-8 mx-auto">
-      <h1 class="mb-3">{{ .Title }}</h1>
-      <div class="d-flex flex-wrap justify-content-between align-items-center">
-        <div class="text-muted">
-          {{ .Date.Format "January 2, 2006" }}
-          <span class="mx-2">•</span>
-          {{ .ReadingTime }} min read
+<!-- Hero Header -->
+<section class="blog-detail-hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <a href="/blog/" class="blog-detail-hero__back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Blog
+        </a>
+        <h1 class="blog-detail-hero__title">{{ .Title }}</h1>
+        <div class="blog-detail-hero__meta">
+          <span>{{ .Date.Format "January 2, 2006" }}</span>
+          <span class="blog-detail-hero__separator">•</span>
+          <span>{{ .ReadingTime }} min read</span>
         </div>
-        <!-- Top Share Buttons -->
-        {{ partial "share-buttons.html" . }}
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Featured Image (with fallback) -->
-  <div class="row mb-4">
-    <div class="col-lg-8 mx-auto">
-      {{ if .Params.featuredImage }}
-      <img src="{{ .Params.featuredImage }}" 
-           class="img-fluid rounded shadow-sm" 
-           alt="Featured image for {{ .Title }}"
-           style="width: 100%; max-height: 400px; object-fit: cover;">
-      {{ else }}
-      <img src="/Symphonytek_logo.png" 
-           class="img-fluid rounded shadow-sm" 
-           alt="Default image for {{ .Title }}"
-           style="width: 100%; max-height: 400px; object-fit: cover;">
-      {{ end }}
-    </div>
-  </div>
-
-  <!-- Content -->
-  <div class="row">
-    <div class="col-lg-8 mx-auto">
-      <div class="content">
-        {{ .Content }}
+<!-- Featured Image -->
+{{ if and .Params.featuredImage (ne .Params.featuredImage "") }}
+<section class="blog-detail-image">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <img src="{{ .Params.featuredImage }}"
+             alt="Featured image for {{ .Title }}"
+             class="blog-detail-image__img">
       </div>
     </div>
   </div>
+</section>
+{{ end }}
 
-  <!-- Bottom Share Section -->
-  <div class="row mt-5">
-    <div class="col-lg-8 mx-auto">
-      <div class="d-flex align-items-center social-share-container">
-        <span class="me-3 text-muted">Share this article:</span>
-        {{ partial "share-buttons.html" . }}
+<!-- Content -->
+<article class="blog-detail-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="blog-detail-content__body">
+          {{ .Content }}
+        </div>
+
+        <!-- Share Section -->
+        <div class="blog-detail-share">
+          <span class="blog-detail-share__label">Share this article:</span>
+          {{ partial "share-buttons.html" . }}
+        </div>
       </div>
     </div>
   </div>
 </article>
 
-<!-- Include styles -->
 {{ partial "social-styles.html" . }}
-
-<style>
-  .content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-  
-  .content p {
-    margin-bottom: 1.5rem;
-  }
-  
-  .content h2, 
-  .content h3, 
-  .content h4 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 1.5rem 0;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.history.length <= 1) {
-      document.querySelector('button.btn-outline-secondary').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = '/blog';
-      });
-    }
-  });
-</script>
 {{ end }}
